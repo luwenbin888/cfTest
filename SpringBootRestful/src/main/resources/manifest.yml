@@ -1,8 +1,7 @@
 ---
 applications:
-  - name: backgroundService
+  - name: springBootRestful
     memory: 1G
     instance: 1
-    no-route: true
     services:
       - rabbit1

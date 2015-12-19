@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.rabbitmq.client.AMQP;
@@ -17,6 +18,7 @@ import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 
 @Component
+@Order(value=2)
 public class RabbitMQService implements CommandLineRunner {
 	
 	private static String queueName = "test-queue";
