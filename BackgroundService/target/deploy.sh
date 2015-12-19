@@ -9,12 +9,19 @@ fi
 if [ -f "./manifest.yml" ]
 	then 
 	echo 'use manifest.yml to cf push'
-	cf push -p ./ackgroundService-0.0.1-SNAPSHOT.jar
-	cf push -p BackgroundService-0.0.1-SNAPSHOT.jar --health-check-type=none
-        echo 'backgroundService deployed'
+	cf push -p ./BackgroundService-0.0.1-SNAPSHOT.jar --health-check-type=none
+	echo 'backgroundService deployed'
 else
 	echo 'use command line argument to push'
 	cf bind-service backgroundService rabbit1
-	cf push backgroundService -p BackgroundService-0.0.1-SNAPSHOT.jar --no-route --health-check-type=none
+	cf push backgroundService -p ./BackgroundService-0.0.1-SNAPSHOT.jar --no-route --health-check-type=none
 	echo 'backgroundService deployed'
+fi
+
+cf app backgroundService | grep 'running'
+if [ $? -eq 0 ]
+	then
+	echo 'backgroundService deployed successfully'
+else
+    echo 'backgroundService deployed failed'
 fi
