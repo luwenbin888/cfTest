@@ -1,4 +1,4 @@
-cf login -a https://api.run.pivotal.io -u luwenbin1016@126.com -p ab022803@ -o luwenbin1016 -s space1
+cf login -a https://api.run.pivotal.io -u "$1" -p "$2" -o luwenbin1016 -s space1
 cf service 'rabbit1' | grep 'succeeded'
 if [ $? -eq 1 ]
 	then
