@@ -1,0 +1,8 @@
+---
+applications:
+  - name: backgroundService
+    memory: 512M
+    instance: 1
+    no-route: true
+    services:
+      - rabbit1
